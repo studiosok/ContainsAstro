@@ -3,9 +3,9 @@ import { defineConfig } from 'astro/config';
 
 import node from "@astrojs/node";
 
-// https://astro.build/config
 export default defineConfig({
-  server: { port: 4000 },
+  server: { port: 4000, host: true },
+  devToolbar: { enabled: false },
   adapter: node({
     mode: "standalone"
   })

@@ -3,13 +3,17 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "clean": "rimraf dist",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "serve": "node ./dist/server/entry.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.2.2",
     "astro": "^5.9.3"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
   }
 }
