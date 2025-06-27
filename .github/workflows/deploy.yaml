@@ -7,7 +7,7 @@ env:
   ROLE: ${{ secrets.AWS_PREFIX }}:role/github_actions
   ECS_SERVICE: fargate-contains-service-byiphzxf
   ECS_CLUSTER: contains-cluster
-  ECS_TASK_DEF: ${{ secrets.AWS_PREFIX }}:task-definition/fargate-contains
+  ECS_TASK_DEF: ${{ secrets.AWS_TASK_DEF_PREFIX }}:task-definition/fargate-contains:1
   CONTAINER_NAME: fargate-contains-app
   ECR_REPO: contains_astro
 
