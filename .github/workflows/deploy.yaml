@@ -4,10 +4,10 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  ROLE: ${{secrets.AWS_PREFIX}}:role/github_actions
+  ROLE: ${{ secrets.AWS_PREFIX }}:role/github_actions
   ECS_SERVICE: fargate-contains-service-byiphzxf
   ECS_CLUSTER: contains-cluster
-  ECS_TASK_DEF: ./task-definition.json
+  ECS_TASK_DEF: ${{ secrets.AWS_PREFIX }}:task-definition/fargate-contains:1
   CONTAINER_NAME: fargate-contains-app
   ECR_REPO: contains_astro
 
@@ -52,6 +52,7 @@ jobs:
         with:
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
+          task-definition-arn: ${{ env.ECS_TASK_DEF }}
           
       - name: Deploy ECS Task Def
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
