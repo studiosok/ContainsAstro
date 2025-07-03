@@ -55,7 +55,7 @@ jobs:
           task-definition-arn: ${{ env.ECS_TASK_DEF }}
           
       - name: Deploy ECS Task Def
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v3
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           service: ${{ env.ECS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
