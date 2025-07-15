@@ -7,7 +7,6 @@ env:
   ROLE: ${{ secrets.AWS_PREFIX }}:role/github_actions
   ECS_SERVICE: fargate-contains-service-byiphzxf
   ECS_CLUSTER: contains-cluster
-  ECS_TASK_DEF: ${{ secrets.AWS_TASK_DEF_PREFIX }}:task-definition/fargate-contains:1
   CONTAINER_NAME: fargate-contains-app
   ECR_REPO: contains_astro
 
@@ -35,6 +34,11 @@ jobs:
       - name: Login to ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
+      
+      - name: Download Task Def
+        id: download-def
+        run: |
+          aws ecs describe-task-definition --task-definition task-def-family --query taskDefinition > task-definition.json
 
       - name: Build, tag, push
         id: build-image
@@ -45,14 +49,14 @@ jobs:
           docker build -t $REGISTRY/$ECR_REPO:$IMAGE_TAG .
           docker push $REGISTRY/$ECR_REPO:$IMAGE_TAG
           echo "image=$REGISTRY/$ECR_REPO:$IMAGE_TAG" >> $GITHUB_OUTPUT
-        
+
       - name: Image ID to ECS Task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
-          task-definition-arn: ${{ env.ECS_TASK_DEF }}
+          task-definition: ${{ steps.download-def.outputs.task-definition.json }}
           
       - name: Deploy ECS Task Def
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
