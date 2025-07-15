@@ -38,7 +38,7 @@ jobs:
       - name: Download Task Def
         id: download-def
         run: |
-          aws ecs describe-task-definition --task-definition task-def-family --query taskDefinition > task-definition.json
+          aws ecs describe-task-definition --task-definition fargate-contains --query taskDefinition > task-definition.json
 
       - name: Build, tag, push
         id: build-image
