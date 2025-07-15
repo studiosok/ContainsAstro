@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "fargate-contains-app",
-            "image": "248934806599.dkr.ecr.us-east-1.amazonaws.com/contains_astro:33e5fad931a46b85c0997e965f68540e0ef5d6c2",
+            "image": "248934806599.dkr.ecr.us-east-1.amazonaws.com/contains_astro",
             "cpu": 0,
             "portMappings": [
                 {
