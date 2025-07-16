@@ -12,6 +12,7 @@ WORKDIR /src
 COPY --chown=node:node yarn.lock package.json ./
 
 RUN yarn install
+RUN pwd
 RUN yarn build
 
 # Copy the rest of the source files into the image.
