@@ -2,6 +2,8 @@
   "name": "containsastro",
   "type": "module",
   "version": "0.0.1",
+  "author": "Kristen Studioso",
+  "license": "MIT",
   "scripts": {
     "clean": "rimraf dist",
     "dev": "astro dev",

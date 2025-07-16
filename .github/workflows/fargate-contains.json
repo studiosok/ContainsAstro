@@ -5,6 +5,7 @@
       "name": "fargate-contains-app",
       "image": "248934806599.dkr.ecr.us-east-1.amazonaws.com/contains_astro",
       "cpu": 256,
+      "memory": 512,
       "portMappings": [
         {
           "containerPort": 4000,
@@ -13,10 +14,6 @@
         }
       ],
       "essential": true,
-      "environment": [],
-      "mountPoints": [],
-      "volumesFrom": [],
-      "systemControls": [],
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
