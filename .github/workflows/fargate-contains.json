@@ -4,7 +4,7 @@
         {
             "name": "fargate-contains-app",
             "image": "248934806599.dkr.ecr.us-east-1.amazonaws.com/contains_astro",
-            "cpu": 0,
+            "cpu": 256,
             "portMappings": [
                 {
                     "containerPort": 4000,
