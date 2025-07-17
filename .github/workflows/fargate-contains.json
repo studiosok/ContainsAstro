@@ -13,6 +13,9 @@
           "protocol": "tcp"
         }
       ],
+      "entrypoint": [
+        "./dist/server/entry.mjs"
+      ],
       "essential": true,
       "logConfiguration": {
         "logDriver": "awslogs",
